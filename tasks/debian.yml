@@ -1,0 +1,20 @@
+---
+- name: Install Intel microcode updates on Debian
+  become: true
+  apt:
+    name:
+      - 'intel-microcode'
+    state: "{{ microcode_package }}"
+    update_cache: yes
+    cache_valid_time: 86400
+  when: ansible_distribution == 'Debian' and ansible_processor[1] == 'GenuineIntel'
+
+- name: Install AMD microcode updates on Debian
+  become: true
+  apt:
+    name:
+      - 'amd64-microcode'
+    state: "{{ microcode_package }}"
+    update_cache: no
+    cache_valid_time: 86400
+  when: ansible_distribution == 'Debian' and ansible_processor[1] == 'AuthenticAMD'

@@ -1,3 +1,5 @@
 ---
-# version check for this role?
+# should we update to latest microcode? (recomended)
+microcode_package: latest # valid is 'present', 'absent' or 'latest'
+# version check for this role? (recomended)
 submodules_versioncheck: true
